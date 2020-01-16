@@ -1,0 +1,62 @@
+<!doctype html>
+{% load static %}
+{% load bootstrap4 %}
+
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'fonts/feather-font/css/iconfont.css' %}">
+    <link rel="stylesheet" href="{% static 'css/scrollbar.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <title>Урамшууллын систем | Хаан даатгал</title>
+</head>
+
+<body>
+<script src="{% static 'js/spinner.js' %}"></script>
+
+<div class="main-wrapper" id="app">
+    <div class="page-wrapper full-page">
+        <div class="page-content d-flex align-items-center justify-content-center">
+
+            <div class="row w-100 mx-0 auth-page">
+                <div class="col-md-8 col-xl-6 mx-auto">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-8 mx-auto">
+                                <div class="auth-form-wrapper px-4 py-5">
+                                    <a href="#" class="noble-ui-logo logo-light d-block mb-2">Хаан<span>Даатгал</span></a>
+                                    <h5 class="text-muted font-weight-normal mb-4">Ажилчдын урамшууллын систем.</h5>
+                                    <form class="forms-sample" method="post">
+                                        {% csrf_token %}
+                                        {% bootstrap_form form %}
+                                        <div class="form-check form-check-flat form-check-primary">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input">
+                                                Намайг сана
+                                            </label>
+                                        </div>
+                                        <div class="mt-3">
+                                            <button type="submit" class="btn btn-primary mr-2 mb-2 mb-md-0">Нэвтрэх
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'plugins/feather-icons/feather.min.js' %}"></script>
+<script src="{% static 'js/template.js' %}"></script>
+</body>
+</html>

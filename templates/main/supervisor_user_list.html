@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Нэр</th>
+                <th>Ажилтны код</th>
+                <th>Албан тушаал</th>
+                <th>Өмнөх улирлын гүйцэтгэлийн хувь</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <td>{{ object.first_name }}</td>
+                    <td>00{{ object.id }}</td>
+                    <td>{{ object.position }}</td>
+                    <td>0%</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

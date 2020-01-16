@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load bootstrap4 static %}
+
+{% block content %}
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post" autocomplete="off">
+                            {% csrf_token %}
+                            <table class="table table-bordered" id="user-rating">
+                                <thead>
+                                <tr>
+                                    <th>Сар</th>
+                                    <th>Ажлын Хурд</th>
+                                    <th>Ажлын чанар</th>
+                                    <th>Идэвхи санаачлага</th>
+                                    <th>Харилцаа хандлага</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for form in formset %}
+                                    <tr id="{{ form.prefix }}-row">
+                                        <td>{% bootstrap_field form.month show_label=False %}</td>
+                                        <td>{% bootstrap_field form.speed show_label=False %}</td>
+                                        <td>{% bootstrap_field form.quality show_label=False %}</td>
+                                        <td>{% bootstrap_field form.active show_label=False %}</td>
+                                        <td>{% bootstrap_field form.attitude show_label=False %}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <p>
+                                {{ formset.management_form }}
+                                <button type="submit" class="btn btn-primary mt-3">Үүсгэх</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/jquery.formset.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#user-rating tbody tr').formset({
+                deleteText: 'устгах',
+                addText: 'нэмэх',
+                added: function (row) {
+                    row.find('.months').datepicker({
+                        minViewMode: 1,
+                        autoclose: true,
+                        format: 'yyyy-mm',
+                    })
+                }
+            });
+
+            $('.months').datepicker({
+                minViewMode: 1,
+                autoclose: true,
+                format: 'yyyy-mm',
+            })
+        })
+    </script>
+{% endblock %}

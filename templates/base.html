@@ -1,0 +1,49 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'fonts/feather-font/css/iconfont.css' %}">
+    <link rel="stylesheet" href="{% static 'css/scrollbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/datepicker.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <title>Урамшууллын систем | Хаан даатгал</title>
+</head>
+
+<body>
+<script src="{% static 'js/spinner.js' %}"></script>
+
+<div class="main-wrapper" id="app">
+    {% include 'layouts/sidebar.html' %}
+
+    <div class="page-wrapper">
+        {% include 'layouts/navbar.html' %}
+
+        {% block content %}{% endblock %}
+    </div>
+</div>
+
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'plugins/feather-icons/feather.min.js' %}"></script>
+<script src="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+
+<script src="{% static 'plugins/chartjs/Chart.min.js' %}"></script>
+<script src="{% static 'plugins/jquery.flot/jquery.flot.js' %}"></script>
+<script src="{% static 'plugins/jquery.flot/jquery.flot.resize.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+<script src="{% static 'plugins/apexcharts/apexcharts.min.js' %}"></script>
+<script src="{% static 'plugins/progressbar-js/progressbar.min.js' %}"></script>
+
+<script src="{% static 'js/template.js' %}"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+<script src="{% static 'js/datepicker.js' %}"></script>
+
+{% block scripts %}{% endblock %}
+</body>
+</html>

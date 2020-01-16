@@ -1,0 +1,104 @@
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <a href="#" class="sidebar-brand">
+            Хаан<span> Даатгал</span>
+        </a>
+        <div class="sidebar-toggler not-active">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="sidebar-body">
+        <ul class="nav">
+            <li class="nav-item nav-category">Үндсэн</li>
+            <li class="nav-item active">
+                <a href="{% url 'main:home' %}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item nav-category">web apps</li>
+
+            {% if request.user.is_employee %}
+                <li class="nav-item ">
+                    <a class="nav-link" data-toggle="collapse" href="#rating" role="button" aria-expanded="false"
+                       aria-controls="rating">
+                        <i class="link-icon" data-feather="mail"></i>
+                        <span class="link-title">Үнэлгээ</span>
+                        <i class="link-arrow" data-feather="chevron-down"></i>
+                    </a>
+
+                    <div class="collapse " id="rating">
+                        <ul class="nav sub-menu">
+                            <li class="nav-item">
+                                <a href="{% url 'main:user-rating-list' %}" class="nav-link ">Жагсаалт</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'main:user-rating' %}" class="nav-link ">Үнэлэх</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </li>
+            {% elif request.user.is_supervisor %}
+                <li class="nav-item ">
+                    <a class="nav-link" data-toggle="collapse" href="#rating" role="button" aria-expanded="false"
+                       aria-controls="rating">
+                        <i class="link-icon" data-feather="mail"></i>
+                        <span class="link-title">Үнэлгээ</span>
+                        <i class="link-arrow" data-feather="chevron-down"></i>
+                    </a>
+
+                    <div class="collapse " id="rating">
+                        <ul class="nav sub-menu">
+                            <li class="nav-item">
+                                <a href="{% url 'main:supervisor-rating-users' %}" class="nav-link ">Жагсаалт</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'main:supervisor-rating' %}" class="nav-link ">Үнэлэх</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+            {% elif request.user.is_hr %}
+                <li class="nav-item ">
+                    <a href="{% url 'main:hr-rating' %}" class="nav-link">
+                        <i class="link-icon" data-feather="message-square"></i>
+                        <span class="link-title">Ажилчдын үнэлгээ</span>
+                    </a>
+                </li>
+            {% endif %}
+            <li class="nav-item ">
+                <a class="nav-link" data-toggle="collapse" href="#email" role="button" aria-expanded="false"
+                   aria-controls="email">
+                    <i class="link-icon" data-feather="mail"></i>
+                    <span class="link-title">Email</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse " id="email">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="" class="nav-link ">Inbox</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link ">Read</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link ">Compose</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item ">
+                <a href="" class="nav-link">
+                    <i class="link-icon" data-feather="message-square"></i>
+                    <span class="link-title">Calendar</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

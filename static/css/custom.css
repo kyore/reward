@@ -1,0 +1,13 @@
+.dynamic-form-add {
+    text-align: center;
+}
+
+.add-row {
+    text-align: center;
+    color: #10b759;
+}
+
+.add-row:hover {
+    text-decoration: none;
+    color: #108141;
+}

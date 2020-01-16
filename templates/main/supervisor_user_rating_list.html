@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Үнэлгээний жагсаалт ({{ request.user.division }})</h6>
+
+                        <div class="table-responsive pt-3">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Ажилчны нэр</th>
+                                    <th>Сар</th>
+                                    <th>Ажлын хурд</th>
+                                    <th>Ажлын чанар</th>
+                                    <th>Идэвхи, санаачлага</th>
+                                    <th>Харилцаа хандлага</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                {% for object in object_list %}
+                                    <tr>
+                                        <td>{{ object.user.first_name }}</td>
+                                        <td class="text-lowercase">{{ object.month|date:"M" }}</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar"
+                                                     style="width: {% widthratio object.speed 5 100 %}%;"
+                                                     aria-valuenow="{{ object.speed }}" aria-valuemin="0"
+                                                     aria-valuemax="5">
+                                                    {% widthratio object.speed 5 100 %}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar"
+                                                     style="width: {% widthratio object.quality 5 100 %}%;"
+                                                     aria-valuenow="{{ object.quality }}" aria-valuemin="0"
+                                                     aria-valuemax="5">
+                                                    {% widthratio object.quality 5 100 %}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar"
+                                                     style="width: {% widthratio object.active 5 100 %}%;"
+                                                     aria-valuenow="{{ object.active }}" aria-valuemin="0"
+                                                     aria-valuemax="5">
+                                                    {% widthratio object.active 5 100 %}
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar"
+                                                     style="width: {% widthratio object.attitude 5 100 %}%;"
+                                                     aria-valuenow="{{ object.attitude }}" aria-valuemin="0"
+                                                     aria-valuemax="5">
+                                                    {% widthratio object.attitude 5 100 %}
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
